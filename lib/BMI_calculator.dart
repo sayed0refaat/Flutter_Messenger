@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:udemy_flutter/bmi_result_screen.dart';
 
 class BmiScreen extends StatefulWidget {
   @override
@@ -17,6 +20,7 @@ class _BmiScreenState extends State<BmiScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         title: Text(
           'BMI CALCULATOR',
         ),
@@ -197,6 +201,7 @@ class _BmiScreenState extends State<BmiScreen> {
                                       weight--;
                                     });
                                   },
+                                  heroTag: 'weight--',
                                   mini: true,
                                   child: Icon(
                                     Icons.remove,
@@ -209,6 +214,7 @@ class _BmiScreenState extends State<BmiScreen> {
                                     });
 
                                   },
+                                  heroTag: 'weight++',
                                   mini: true,
                                   child: Icon(
                                     Icons.add,
@@ -253,6 +259,7 @@ class _BmiScreenState extends State<BmiScreen> {
                                       age--;
                                     });
                                   },
+                                  heroTag: 'age--',
                                   mini: true,
                                   child: Icon(
                                     Icons.remove,
@@ -264,6 +271,7 @@ class _BmiScreenState extends State<BmiScreen> {
                                       age++;
                                     });
                                   },
+                                  heroTag: 'age++',
                                   mini: true,
                                   child: Icon(
                                     Icons.add,
@@ -285,7 +293,20 @@ class _BmiScreenState extends State<BmiScreen> {
             color: Colors.cyan,
             child: MaterialButton(
               height: 50.0,
-              onPressed: () {},
+              onPressed: () {
+                double result = weight / pow(height/100,2);
+                //print(result.round());
+                Navigator.push(
+                  context,
+                  MaterialPageRoute
+                    (builder: (context) => BmiResultScreen(
+                    result: result.round(),
+                    age: age,
+                    ismale: IsMale,
+                  ),
+                  ),
+                );
+              },
               child: Text(
                 'Calculate',
                 style: TextStyle(

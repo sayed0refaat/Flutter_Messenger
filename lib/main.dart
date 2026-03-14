@@ -4,6 +4,7 @@ import 'package:udemy_flutter/meesenger_screen.dart';
 import 'package:udemy_flutter/user_screen.dart';
 
 import 'BMI_calculator.dart';
+import 'bmi_result_screen.dart';
 import 'counter_screen.dart';
 import 'login_screen.dart';
 
