@@ -1,8 +1,10 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+import '../../shared/components/components.dart';
 
+class LoginScreen extends StatelessWidget {
   var emailcontroller = TextEditingController();
   var passwordcontroller = TextEditingController();
 
@@ -38,15 +40,14 @@ class LoginScreen extends StatelessWidget {
                   //   print(value);
                   // }
 
-                  decoration:InputDecoration(
-                   // hintText: 'Email Address',
+                  decoration: InputDecoration(
+                    // hintText: 'Email Address',
                     labelText: 'Email Address',
                     prefixIcon: Icon(
                       Icons.email,
                     ),
-                    border: OutlineInputBorder(
-                    ),
-                  ) ,
+                    border: OutlineInputBorder(),
+                  ),
                 ),
                 SizedBox(
                   //width: 10.0,
@@ -55,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                 TextFormField(
                   controller: passwordcontroller,
                   keyboardType: TextInputType.visiblePassword,
-                  obscureText: true ,
+                  obscureText: true,
                   onFieldSubmitted: (value) {
                     print(value);
                   },
@@ -63,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                   //   print(value);
                   // }
 
-                  decoration:InputDecoration(
+                  decoration: InputDecoration(
                     // hintText: 'Email Address',
                     labelText: 'Password',
                     prefixIcon: Icon(
@@ -72,29 +73,19 @@ class LoginScreen extends StatelessWidget {
                     suffixIcon: Icon(
                       Icons.password,
                     ),
-                    border: OutlineInputBorder(
-                    ),
-                  ) ,
+                    border: OutlineInputBorder(),
+                  ),
                 ),
                 SizedBox(
                   //width: 10.0,
                   height: 15.0,
                 ),
-                Container(
-                  width: double.infinity,
-                  color: Colors.cyan ,
-                  child: MaterialButton(
-                      onPressed: () {
-                        print(emailcontroller.text);
-                        print(passwordcontroller.text);
-                      },
-                    child: Text(
-                      'LOGIN',
-                      style: TextStyle(
-                        color: Colors.white
-                      ),
-                    ) ,
-                  ),
+                defaultbutton(
+                  text: 'login',
+                  function: () {
+                    print(emailcontroller.text);
+                    print(passwordcontroller.text);
+                  },
                 ),
                 SizedBox(
                   //width: 10.0,
@@ -103,14 +94,10 @@ class LoginScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                        'Don\'t Have an Account?'
-                    ),
+                    Text('Don\'t Have an Account?'),
                     TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          'Register'
-                        ),
+                      onPressed: () {},
+                      child: Text('Register'),
                     ),
                   ],
                 ),
