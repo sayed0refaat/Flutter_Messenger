@@ -9,6 +9,7 @@ Widget defaultbutton({
   required  VoidCallback function,
   required String text,
 
+
 }) => Container(
   width: width,
   color: background ,
@@ -23,3 +24,36 @@ Widget defaultbutton({
   ),
 );
 
+Widget defaultformfield({
+  required TextEditingController controller,
+  required TextInputType type,
+  bool isPassword=false ,
+  Function(String)? onSubmitted,
+  Function(String)? onChanged,
+  required String? Function(String?) validate,
+  required String label,
+  required IconData prefix,
+  IconData? suffix,
+  VoidCallback? SuffixPressed,
+}) => TextFormField(
+  controller: controller,
+  keyboardType: type,
+  obscureText: isPassword,
+  onFieldSubmitted: onSubmitted,
+  onChanged: onChanged,
+  validator: validate,
+  decoration: InputDecoration(
+    // hintText: 'Email Address',
+    labelText: label,
+    prefixIcon: Icon(
+      prefix,
+    ),
+    suffixIcon: suffix!=null ? IconButton(
+      icon: Icon(
+        suffix,
+      ),
+      onPressed: SuffixPressed,
+    ) : null,
+    border: OutlineInputBorder(),
+  ),
+);
